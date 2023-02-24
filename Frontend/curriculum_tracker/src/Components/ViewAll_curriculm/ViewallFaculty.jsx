@@ -14,7 +14,7 @@ const ViewallFaculty = () => {
 
     const getData=()=>{
       
-      axios.get('/api/pastlistbyfaculty')
+      axios.get('/pastlistbyfaculty')
       .then(
           (response)=>{
               

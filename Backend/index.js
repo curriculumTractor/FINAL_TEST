@@ -27,7 +27,7 @@ Mongoose.connect("mongodb+srv://ictakcurriculum:anprs@ictak-curriculum-tracke.k6
 
 //signup 
 
-app.post('/api/signup',async(req,res)=>{
+app.post('/signup',async(req,res)=>{
     
     try {
         let data = {
@@ -63,7 +63,7 @@ app.post('/api/signup',async(req,res)=>{
     }
 })
 //lOGIN
-app.post("/api/login",(req,res)=>{
+app.post("/login",(req,res)=>{
     try{  
        var email =req.body.email;
        var password=req.body.password;
@@ -119,7 +119,7 @@ const fileStorageEngine = Multer.diskStorage({
 //middleware
 const upload = Multer({storage: fileStorageEngine});
 
-app.post('/api/addrequirement',upload.single("photo"), async (req, res) => {
+app.post('/addrequirement',upload.single("photo"), async (req, res) => {
 
     try {
         let data1 = {
@@ -151,7 +151,7 @@ app.post('/api/addrequirement',upload.single("photo"), async (req, res) => {
 
 
 // faculty listrequirement
-app.get('/api/reqlist', async (req, res) => {
+app.get('/reqlist', async (req, res) => {
     try {
         let list = await ReqModel.find({ "status": "notrespond" })
 
@@ -163,7 +163,7 @@ app.get('/api/reqlist', async (req, res) => {
 })
 
 // display past curriculum by admin
-app.get('/api/pastlist',async (req, res) => {
+app.get('/pastlist',async (req, res) => {
     try {
         let curr = await CurModel.find ({ "status": "approved" })
         res.send(curr)
@@ -177,7 +177,7 @@ app.get('/api/pastlist',async (req, res) => {
 
 
 // display past curriculum by faculty
-app.get('/api/pastlistbyfaculty',async (req, res) => {
+app.get('/pastlistbyfaculty',async (req, res) => {
     try {
         let curr = await CurModel.find ({"status":"approved"})
         res.send(curr)
@@ -205,7 +205,7 @@ const pathh = path.resolve(__dirname,'public');
 app.use(Express.static(pathh));
   
 // new upload
-    app.post('/api/curriculumupload',Mul.single('pdf'),(req,res)=>{
+    app.post('/curriculumupload',Mul.single('pdf'),(req,res)=>{
         let cur = 'uploads/' + req.file.originalname;
         let comments = req.body.comments;
         let title = req.body.title;
@@ -230,7 +230,7 @@ app.use(Express.static(pathh));
     })
 
 // Download curriculum by admin
-app.get('/api/download/:id',(req,res)=>{
+app.get('/download/:id',(req,res)=>{
     // var hex = /[0-9A-Fa-f]{6}/g;
     var id =req.params.id;
     // id = (hex.test(id))? ObjectId(_id) : id;
@@ -253,7 +253,7 @@ app.get('/api/download/:id',(req,res)=>{
 
 
 //DISPLAY curriculum
-app.post('/api/displaycurriculum',(req, res) => {   
+app.post('/displaycurriculum',(req, res) => {   
     CurModel.find(
         (err,data)=>{
             
@@ -270,7 +270,7 @@ app.post('/api/displaycurriculum',(req, res) => {
 // ADMIN VIEW
 // ADMIN UPDATE
 
-app.put('/api/curriculum/:id/status',async (req,res)=>{
+app.put('/curriculum/:id/status',async (req,res)=>{
     try{
     let {status} = req.body
     let {id} = req.params
@@ -311,7 +311,7 @@ app.put('/api/curriculum/:id/status',async (req,res)=>{
 })
 
 // admin delete
-app.delete('/api/curricul/delete/:id',(req,res)=>{
+app.delete('/curricul/delete/:id',(req,res)=>{
     let id = req.params.id;
     CurModel.deleteOne(
         ({_id:id},(err,data)=>{
@@ -326,7 +326,7 @@ app.delete('/api/curricul/delete/:id',(req,res)=>{
 
 
 // approve curriculum
-app.post('/api/curupdate',(req,res)=>{
+app.post('/curupdate',(req,res)=>{
     let data =  req.body
     
     const currupdate = new SaveModel(data);
@@ -341,7 +341,7 @@ app.post('/api/curupdate',(req,res)=>{
     } )
 
 // approved list
-app.get('/api/approvedlist',(req,res)=>{
+app.get('/approvedlist',(req,res)=>{
     console.log("data")
 })
 
@@ -349,7 +349,7 @@ app.get('/api/approvedlist',(req,res)=>{
 
 
 // display curriculum by status
-app.get("/api/curriculum", async (req, res) => {
+app.get("/curriculum", async (req, res) => {
     try {
       filter = {};
       if (req.query.status) {

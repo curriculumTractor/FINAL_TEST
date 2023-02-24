@@ -14,7 +14,7 @@ const ViewCurriculm = () => {
 
         const getData=()=>{
             
-            axios.get('/api/pastlist')
+            axios.get('/pastlist')
             .then(
                 (response)=>{
                     

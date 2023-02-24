@@ -14,7 +14,7 @@ const RecieveReqrmnt = () => {
     )
 
     const getData =()=>{
-        axios.get('/api/reqlist')
+        axios.get('/reqlist')
         .then(
             (response)=>{
                 

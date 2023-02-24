@@ -47,7 +47,7 @@ const RequirementForm = () => {
                 "Content-Type":"multipart/form-data"
             }
         }
-        const res=await axios.post("/api/addrequirement",formData,config);
+        const res=await axios.post("/addrequirement",formData,config);
         console.log(res);
         if (res.statusText==="OK") {
             alert("Requirement successfully Added")

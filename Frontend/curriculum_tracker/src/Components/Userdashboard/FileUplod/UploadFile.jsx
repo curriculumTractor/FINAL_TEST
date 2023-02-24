@@ -34,7 +34,7 @@ const UploadFile = () => {
           }
       }
       
-      const res=await axios.post("/api/curriculumupload",data,config);
+      const res=await axios.post("/curriculumupload",data,config);
         console.log(res);
         if (res.statusText==="OK") {
              alert("Requirement successfully Added");
