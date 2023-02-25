@@ -7,11 +7,11 @@ const PORT = 3005;
 const Bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const Multer = require('multer');
-const UserModel = require("./models/Users");
-const ReqModel = require('./models/requirement')
-const CurModel = require("./models/curriculum");
-const SaveModel = require("./models/savecurriculum")
-const ErrorMessage = require("./config/errors");
+const UserModel = require("./Backend/models/Users");
+const ReqModel = require('./Backend/models/requirement')
+const CurModel = require("./Backend/models/curriculum");
+const SaveModel = require("./Backend/models/savecurriculum")
+const ErrorMessage = require("./Backend/config/errors");
 
 const app =new Express();
 app.use("/uploads",Express.static("./uploads"));
